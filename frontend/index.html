@@ -156,6 +156,7 @@
             }
 
             const logsData = await response.json();
+            console.log("ข้อมูลที่ได้จาก API:", logsData);
 
             // --- 1. Update Metrics ---
             document.getElementById('totalEvents').innerText = logsData.length;

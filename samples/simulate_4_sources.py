@@ -4,7 +4,7 @@ import time
 import random
 from datetime import datetime
 
-API_URL = "http://localhost:8000/ingest"
+API_URL = "https://log-manager-xd44.onrender.com/ingest"
 
 def send_log(source, level, message, data):
     payload = {
