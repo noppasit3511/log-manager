@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: log_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    environment:
+      - DATABASE_URL=postgresql://admin:password123@db:5432/log_db
+    ports:
+      - "8000:8000"
+      - "514:514/udp"
+    depends_on:
+      - db
+    restart: always
+
+volumes:
+  pgdata:
