@@ -219,7 +219,7 @@ def ingest_log(log: LogInput):
 
 #Search API + Role-Based Access Control (RBAC)
 @app.get("/logs")
-def get_logs(tenant: str = None, limit: int = 50, current_user: User = Depends(get_current_user)):
+def get_logs(tenant: str = None, limit: int = 100, current_user: User = Depends(get_current_user)):
     db = SessionLocal()
     try:
         query = db.query(LogEntry)
